@@ -41,4 +41,22 @@
         android:layout_below="@+id/tvUserName"
         android:text="This is the tweet body" />
 
+    <ImageButton
+        android:id="@+id/imageReply"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignLeft="@+id/tvBody"
+        android:layout_below="@+id/tvBody"
+        android:background="@drawable/ic_reply"
+        android:scaleType="fitXY" />
+
+    <ImageButton
+        android:id="@+id/imageFavorite"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvBody"
+        android:layout_toRightOf="@+id/imageReply"
+        android:background="@drawable/selector_favorite"
+        android:scaleType="fitXY" />
+
 </RelativeLayout>
