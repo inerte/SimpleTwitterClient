@@ -20,11 +20,17 @@
         android:textSize="20sp" />
 
     <Button
+        android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_margin="20dp"
+        android:background="@drawable/list_login_button"
+        android:drawableLeft="@drawable/ic_loginbird"
         android:onClick="loginToRest"
-        android:text="@string/login_label" />
+        android:paddingLeft="15dp"
+        android:text="@string/login_label"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
