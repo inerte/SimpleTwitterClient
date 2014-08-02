@@ -10,7 +10,8 @@ public class ComposeActivity extends Activity {
     public void onBackPressed() {
         // TODO Auto-generated method stub
         super.onBackPressed();
-        overridePendingTransition(R.anim.flip_out, R.anim.flip_in);
+        overridePendingTransition(R.anim.slide_in_from_bottom,
+                R.anim.slide_out_to_top);
     }
 
     @Override

@@ -37,8 +37,7 @@ public class TimelineActivity extends FragmentActivity {
             Intent intent = new Intent(this, ComposeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            overridePendingTransition(R.anim.flip_in,
-                    R.anim.flip_out);
+            overridePendingTransition(R.anim.slide_in_from_top, R.anim.slide_out_to_bottom);
             return true;
         default:
             return super.onOptionsItemSelected(item);
