@@ -6,6 +6,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class ComposeActivity extends Activity {
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
+        super.onBackPressed();
+        overridePendingTransition(R.anim.flip_out, R.anim.flip_in);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
