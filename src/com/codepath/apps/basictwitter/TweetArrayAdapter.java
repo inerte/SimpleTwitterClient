@@ -2,14 +2,18 @@ package com.codepath.apps.basictwitter;
 
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.codepath.apps.basictwitter.listeners.OnSwipeTouchListener;
 import com.codepath.apps.basictwitter.models.Tweet;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -44,6 +48,37 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
         tvName.setText(tweet.getUser().getName());
         tvUserName.setText('@' + tweet.getUser().getScreenName());
         tvBody.setText(tweet.getBody());
+
+        final Context c = getContext();
+
+        v.setOnTouchListener(new OnSwipeTouchListener(c) {
+            @Override
+            public void onSwipeRight() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(c);
+
+                builder.setMessage("Delete this tweet?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                            int id) {
+                                        Toast.makeText(c,
+                                                "Tweet will be removed!",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                        .setNegativeButton("No",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog,
+                                            int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+
         return v;
     }
 }
