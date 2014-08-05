@@ -51,33 +51,63 @@ public class TweetArrayAdapter extends ArrayAdapter<Tweet> {
 
         final Context c = getContext();
 
-        v.setOnTouchListener(new OnSwipeTouchListener(c) {
-            @Override
-            public void onSwipeRight() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(c);
+        if (tweet.isOwn()) {
+            v.setOnTouchListener(new OnSwipeTouchListener(c) {
+                @Override
+                public void onSwipeRight() {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(c);
 
-                builder.setMessage("Delete this tweet?")
-                        .setCancelable(false)
-                        .setPositiveButton("Yes",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
-                                            int id) {
-                                        Toast.makeText(c,
-                                                "Tweet will be removed!",
-                                                Toast.LENGTH_SHORT).show();
-                                    }
-                                })
-                        .setNegativeButton("No",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog,
-                                            int id) {
-                                        dialog.cancel();
-                                    }
-                                });
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
-        });
+                    builder.setMessage("Delete this tweet?")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(
+                                                DialogInterface dialog, int id) {
+                                            Toast.makeText(c,
+                                                    "Tweet will be removed!",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                            .setNegativeButton("No",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(
+                                                DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+            });
+        } else {
+            v.setOnTouchListener(new OnSwipeTouchListener(c) {
+                @Override
+                public void onSwipeRight() {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(c);
+
+                    builder.setMessage("Retweet?")
+                            .setCancelable(false)
+                            .setPositiveButton("Yes",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(
+                                                DialogInterface dialog, int id) {
+                                            Toast.makeText(c,
+                                                    "Retweet in 3 2 1!",
+                                                    Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                            .setNegativeButton("No",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(
+                                                DialogInterface dialog, int id) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
+            });
+        }
 
         return v;
     }

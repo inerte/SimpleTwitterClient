@@ -28,6 +28,14 @@ public class Tweet {
         return user;
     }
 
+    public Boolean isOwn() {
+        if ("inerte".equals(this.getUser())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static ArrayList<Tweet> fromJSONArray(JSONArray jsonArray) {
         ArrayList<Tweet> tweets = new ArrayList<Tweet>(jsonArray.length());
 
