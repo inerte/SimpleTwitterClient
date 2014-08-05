@@ -14,33 +14,35 @@ import com.codepath.apps.basictwitter.TweetArrayAdapter;
 import com.codepath.apps.basictwitter.models.Tweet;
 
 public class TweetsListFragment extends Fragment {
-	private ArrayList<Tweet> tweets;
-	private TweetArrayAdapter aTweets;
-	private ListView lvTweets;
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		// Non-view initialization
-		tweets = new ArrayList<Tweet>(); 
-		aTweets = new TweetArrayAdapter(getActivity(), tweets);
-	}
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		// Inflate the layout
-		View v = inflater.inflate(R.layout.fragment_tweets_list, container, false);
-		// Assign our view references
-		lvTweets = (ListView) v.findViewById(R.id.lvTweets);
-		lvTweets.setAdapter(aTweets);
-		// Return the layout view
-		return v;
-	}
-	
-	// Delegate the adding to the internal adapter
-	public void addAll(ArrayList<Tweet> tweets) {
-		aTweets.addAll(tweets);
-	}
-	
+    private ArrayList<Tweet> tweets;
+    private TweetArrayAdapter aTweets;
+    private ListView lvTweets;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Non-view initialization
+        tweets = new ArrayList<Tweet>();
+        aTweets = new TweetArrayAdapter(getActivity(), tweets);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        // Inflate the layout
+        View v = inflater.inflate(R.layout.fragment_tweets_list, container,
+                false);
+        // Assign our view references
+        lvTweets = (ListView) v.findViewById(R.id.lvTweets);
+        lvTweets.setAdapter(aTweets);
+        // Return the layout view
+
+        return v;
+    }
+
+    // Delegate the adding to the internal adapter
+    public void addAll(ArrayList<Tweet> tweets) {
+        aTweets.addAll(tweets);
+    }
+
 }
