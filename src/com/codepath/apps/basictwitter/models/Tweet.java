@@ -29,7 +29,7 @@ public class Tweet {
     }
 
     public Boolean isOwn() {
-        if ("inerte".equals(this.getUser())) {
+        if ("inerte".equals(this.getUser().getScreenName())) {
             return true;
         } else {
             return false;
