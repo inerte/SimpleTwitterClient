@@ -72,3 +72,7 @@ Not done
 - Swiping another person's tweets should prompt the user with a dialog to perform a retweet.
 
 Done
+
+![Video Walkthrough](anim_simple_twitter_client.gif)
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
