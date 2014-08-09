@@ -42,3 +42,33 @@ Not done
 - Build a "detail" view for Twitter that display full Tweet details
 
 Not done
+
+
+### Second assignment:
+
+It took me about five hours
+
+
+- Each activity launched should use a custom activity transition on the forward and back animations
+
+Done. I had to add Compose activity to animate it
+
+- Switching between home timeline and mentions timeline should use custom fragment transition animations on forward and back.
+
+Not done
+
+- When pressing "compose", window should slide down from the top and then after posting should dismiss by sliding up out of view.
+
+Done
+
+- Swiping one your own tweets to the right should bring up a confirm dialog asking if you'd like to delete it.
+
+Done
+
+- On deletion of a tweet after confirming, tweet should slide up until disappearing when being removed from the ListView.
+
+Not done
+
+- Swiping another person's tweets should prompt the user with a dialog to perform a retweet.
+
+Done
