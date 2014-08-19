@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.codepath.apps.basictwitter.fragments.HomeTimelineFragment;
 import com.codepath.apps.basictwitter.fragments.MentionsTimelineFragment;
 import com.codepath.apps.basictwitter.listeners.FragmentTabListener;
+import com.codepath.apps.basictwitter.services.TweetService;
 
 public class TimelineActivity extends FragmentActivity {
     @Override
@@ -19,6 +20,11 @@ public class TimelineActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
         setupTabs();
+
+        // Construct our Intent specifying the Service
+        Intent i = new Intent(this, TweetService.class);
+        // Start the service
+        startService(i);
     }
 
     @Override
@@ -37,7 +43,8 @@ public class TimelineActivity extends FragmentActivity {
             Intent intent = new Intent(this, ComposeActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_from_top, R.anim.slide_out_to_bottom);
+            overridePendingTransition(R.anim.slide_in_from_top,
+                    R.anim.slide_out_to_bottom);
             return true;
         default:
             return super.onOptionsItemSelected(item);
