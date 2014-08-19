@@ -2,6 +2,9 @@ package com.codepath.apps.basictwitter;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -9,10 +12,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.codepath.apps.basictwitter.alarms.TweetAlarmReceiver;
 import com.codepath.apps.basictwitter.fragments.HomeTimelineFragment;
 import com.codepath.apps.basictwitter.fragments.MentionsTimelineFragment;
 import com.codepath.apps.basictwitter.listeners.FragmentTabListener;
-import com.codepath.apps.basictwitter.services.TweetService;
 
 public class TimelineActivity extends FragmentActivity {
     @Override
@@ -21,10 +24,25 @@ public class TimelineActivity extends FragmentActivity {
         setContentView(R.layout.activity_timeline);
         setupTabs();
 
-        // Construct our Intent specifying the Service
-        Intent i = new Intent(this, TweetService.class);
-        // Start the service
-        startService(i);
+        scheduleAlarm();
+    }
+
+    public void scheduleAlarm() {
+        // Construct an intent that will execute the AlarmReceiver
+        Intent intent = new Intent(getApplicationContext(),
+                TweetAlarmReceiver.class);
+        // Create a PendingIntent to be triggered when the alarm goes off
+        final PendingIntent pIntent = PendingIntent.getBroadcast(this,
+                TweetAlarmReceiver.REQUEST_CODE, intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+        // Setup periodic alarm every 50 seconds
+        long firstMillis = System.currentTimeMillis(); // first run of alarm is
+                                                       // immediate
+        int intervalMillis = 50000; // 50 seconds
+        AlarmManager alarm = (AlarmManager) this
+                .getSystemService(Context.ALARM_SERVICE);
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis,
+                intervalMillis, pIntent);
     }
 
     @Override

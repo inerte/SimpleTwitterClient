@@ -52,6 +52,11 @@
             android:label="@string/title_activity_compose" >
         </activity>
 
+        <receiver
+            android:name="com.codepath.apps.basictwitter.alarms.TweetAlarmReceiver"
+            android:process=":remote" >
+        </receiver>
+
         <service
             android:name="com.codepath.apps.basictwitter.services.TweetService"
             android:exported="false" />
